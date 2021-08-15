@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@ember/render-modifiers": "^1.0.2",
-    "@embroider/macros": "^0.43.5",
+    "@embroider/macros": "^0.44.0",
     "ember-cli-babel": "^7.26.3",
     "ember-cli-htmlbars": "^5.7.1",
     "ember-click-outside-modifier": "^2.0.0",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.4.0",
-    "@embroider/test-setup": "^0.43.5",
+    "@embroider/test-setup": "^0.44.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@tailwindcss/ui": "^0.7.2",
@@ -101,9 +101,9 @@
     "testdouble-qunit": "^3.0.0"
   },
   "resolutions": {
-    "@embroider/core": "^0.43.5",
-    "@embroider/macros": "^0.43.5",
-    "@embroider/util": "^0.43.5"
+    "@embroider/core": "^0.44.0",
+    "@embroider/macros": "^0.44.0",
+    "@embroider/util": "^0.44.0"
   },
   "engines": {
     "node": "10.* || >= 12"
