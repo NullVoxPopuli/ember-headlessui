@@ -87,3 +87,10 @@ jobs:
 
       - name: test ${{ matrix.ember-try-scenario }}
         run: yarn ember try:one ${{ matrix.ember-try-scenario }}
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ember-try-output
+          path: |
+            dist
