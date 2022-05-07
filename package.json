@@ -39,7 +39,7 @@
     "node": "10.* || >= 12"
   },
   "lint-staged": {
-    "*.js": "eslint --fix",
+    "*.{js,ts}": "eslint --fix",
     "*.hbs": "ember-template-lint --fix",
     "*.{json,md,yml}": "prettier --write"
   },
