@@ -20,7 +20,7 @@
     "lint:js:fix": "eslint . --fix",
     "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
     "lint:other:fix": "prettier --write \"**/*.{json,md,yml}\"",
-    "prepare": "husky install"
+    "prepare": "husky install; yarn build"
   },
   "devDependencies": {
     "@nullvoxpopuli/eslint-configs": "^2.2.16",
