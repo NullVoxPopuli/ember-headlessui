@@ -75,7 +75,6 @@ importers:
       ember-resolver: ^8.0.3
       ember-source: ~4.3.0
       ember-template-lint: ^4.3.0
-      ember-welcome-page: ^6.2.0
       eslint: ^7.32.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-ember: ^10.5.9
@@ -141,7 +140,6 @@ importers:
       ember-resolver: 8.0.3
       ember-source: 4.3.0_webpack@5.72.0
       ember-template-lint: 4.6.0
-      ember-welcome-page: 6.2.0
       eslint: 7.32.0
       eslint-config-prettier: 8.5.0_eslint@7.32.0
       eslint-plugin-ember: 10.6.1_eslint@7.32.0
@@ -2228,6 +2226,7 @@ packages:
     dependencies:
       '@embroider/shared-internals': 1.6.0
       semver: 7.3.7
+    dev: false
 
   /@embroider/babel-loader-8/1.6.0_2b142cd547d2a2684b449931af7dabe2:
     resolution: {integrity: sha512-re/fAMTBFqO8le8yrSz5Zc7p3w4Y8ZlYUMl2Y1L0p6/bHxhQ4lbUpsP4mAWo6rySSdwUpk9CUyWtHUHK1S1Whg==}
@@ -8801,13 +8800,6 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
-    dev: true
-
-  /ember-welcome-page/6.2.0:
-    resolution: {integrity: sha512-bDPgNgW0eRhLCHLaFK87p1mcP8hGwr0pXvPoskDeUGQzsOI3Pc3U/8WLpUSi2mNrmv0eNtfWqE+A1Wbx6F2l0Q==}
-    engines: {node: 12.* || 14.* || >= 16}
-    dependencies:
-      '@embroider/addon-shim': 1.6.0
     dev: true
 
   /emoji-regex/7.0.3:
