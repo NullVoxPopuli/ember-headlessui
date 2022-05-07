@@ -11,9 +11,7 @@ export default class DialogTitleComponent extends Component {
     let { dialogGuid } = this.args;
 
     if (dialogGuid === undefined) {
-      throw new Error(
-        '<Dialog::-Title /> is missing a parent <Dialog /> component.'
-      );
+      throw new Error('<Dialog::-Title /> is missing a parent <Dialog /> component.');
     }
   }
 

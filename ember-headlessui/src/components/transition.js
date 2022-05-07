@@ -5,10 +5,7 @@ import { invokeHelper } from '@ember/helper';
 import { action } from '@ember/object';
 import { schedule } from '@ember/runloop';
 
-import {
-  AppliedClassNamesManager,
-  TransitionVisibilityManager,
-} from '../helpers/transition';
+import { AppliedClassNamesManager, TransitionVisibilityManager } from '../helpers/transition';
 
 export default class TransitionComponent extends Component {
   constructor() {
@@ -35,13 +32,9 @@ export default class TransitionComponent extends Component {
 
   allTransitionDomNodes = new Set();
 
-  transitionVisibilityManager = invokeHelper(
-    this,
-    TransitionVisibilityManager,
-    () => ({
-      positional: [this.allTransitionDomNodes, this.args.show],
-    })
-  );
+  transitionVisibilityManager = invokeHelper(this, TransitionVisibilityManager, () => ({
+    positional: [this.allTransitionDomNodes, this.args.show],
+  }));
 
   get componentIsVisible() {
     return getValue(this.transitionVisibilityManager);
@@ -72,13 +65,9 @@ export default class TransitionComponent extends Component {
   /** @type {HTMLElement} */
   ownDomNode;
 
-  appliedClassNamesManager = invokeHelper(
-    this,
-    AppliedClassNamesManager,
-    () => ({
-      positional: [this, this.args.show],
-    })
-  );
+  appliedClassNamesManager = invokeHelper(this, AppliedClassNamesManager, () => ({
+    positional: [this, this.args.show],
+  }));
 
   get transitionClassNames() {
     return getValue(this.appliedClassNamesManager);

@@ -56,10 +56,7 @@ export default class Menu extends Component {
       .slice()
       .reverse()
       .find((item, index) => {
-        if (
-          this.activeItemIndex !== -1 &&
-          this.items.length - index - 1 >= this.activeItemIndex
-        ) {
+        if (this.activeItemIndex !== -1 && this.items.length - index - 1 >= this.activeItemIndex) {
           return false;
         }
         return item.isEnabled;

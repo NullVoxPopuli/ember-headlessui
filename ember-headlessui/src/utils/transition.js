@@ -14,19 +14,17 @@ import { TrackedSet } from 'tracked-maps-and-sets';
 export async function waitForTransition(node) {
   // Safari returns a comma separated list of values, so let's sort them and take the highest value.
   let { transitionDuration, transitionDelay } = getComputedStyle(node);
-  let [durationMs, delaysMs] = [transitionDuration, transitionDelay].map(
-    (value) => {
-      let [resolvedValue = 0] = value
-        .split(',')
-        // Remove falsy we can't work with
-        .filter(Boolean)
-        // Values are returned as `0.3s` or `75ms`
-        .map((v) => (v.includes('ms') ? parseFloat(v) : parseFloat(v) * 1000))
-        .sort((a, z) => z - a);
+  let [durationMs, delaysMs] = [transitionDuration, transitionDelay].map((value) => {
+    let [resolvedValue = 0] = value
+      .split(',')
+      // Remove falsy we can't work with
+      .filter(Boolean)
+      // Values are returned as `0.3s` or `75ms`
+      .map((v) => (v.includes('ms') ? parseFloat(v) : parseFloat(v) * 1000))
+      .sort((a, z) => z - a);
 
-      return resolvedValue;
-    }
-  );
+    return resolvedValue;
+  });
 
   if (durationMs !== 0) {
     await timeout(durationMs + delaysMs);

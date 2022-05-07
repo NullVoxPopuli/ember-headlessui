@@ -2,11 +2,7 @@ import Helper from '@ember/component/helper';
 
 import { dropTask, timeout } from 'ember-concurrency';
 
-import {
-  ClassNameSet,
-  splitClassNames,
-  waitForTransition,
-} from '../../utils/transition';
+import { ClassNameSet, splitClassNames, waitForTransition } from '../../utils/transition';
 
 export class AppliedClassNamesManager extends Helper {
   appliedClassNames = new ClassNameSet();

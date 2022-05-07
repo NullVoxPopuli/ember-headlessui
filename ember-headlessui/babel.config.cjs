@@ -28,6 +28,8 @@ module.exports = {
         loose: true,
       },
     ],
+    // Pretty sure this lint rule is broken
+    // eslint-disable-next-line node/no-missing-require
     resolve('@embroider/addon-dev/template-colocation-plugin'),
   ],
 };

@@ -182,8 +182,7 @@ export default class ListboxComponent extends Component {
 
     if (this.args.value) {
       if (this.args.value === optionComponent.args.value) {
-        this.selectedOptionIndex = this.activeOptionIndex =
-          this.optionElements.length - 1;
+        this.selectedOptionIndex = this.activeOptionIndex = this.optionElements.length - 1;
 
         this.scrollIntoView(optionElement);
       }
@@ -224,8 +223,7 @@ export default class ListboxComponent extends Component {
       optionValue = optionComponent.args.value;
       optionIndex = optionComponent.index;
     } else if (this.activeOptionIndex !== undefined) {
-      optionValue =
-        this.optionValues[this.optionElements[this.activeOptionIndex].id];
+      optionValue = this.optionValues[this.optionElements[this.activeOptionIndex].id];
       optionIndex = parseInt(
         this.optionElements[this.activeOptionIndex].getAttribute('data-index')
       );
@@ -271,11 +269,7 @@ export default class ListboxComponent extends Component {
   }
 
   setNextOptionActive() {
-    for (
-      let i = this.activeOptionIndex + 1;
-      i < this.optionElements.length;
-      i++
-    ) {
+    for (let i = this.activeOptionIndex + 1; i < this.optionElements.length; i++) {
       if (!this.optionElements[i].hasAttribute('disabled')) {
         this.activeOptionIndex = i;
         break;

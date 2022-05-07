@@ -10,9 +10,7 @@ export default class DialogOverlayComponent extends Component {
     let { dialogGuid } = this.args;
 
     if (dialogGuid === undefined) {
-      throw new Error(
-        '<Dialog::-Overlay /> is missing a parent <Dialog /> component.'
-      );
+      throw new Error('<Dialog::-Overlay /> is missing a parent <Dialog /> component.');
     }
   }
 

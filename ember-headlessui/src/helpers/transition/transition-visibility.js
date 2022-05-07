@@ -76,9 +76,7 @@ export class TransitionVisibilityManager extends Helper {
     yield timeout(0);
 
     // Wait for all Transition DOM elements to finish transitioning (parent and children)
-    yield all(
-      Array.from(this.domNodes).map((domNode) => waitForTransition(domNode))
-    );
+    yield all(Array.from(this.domNodes).map((domNode) => waitForTransition(domNode)));
 
     this.value = false;
 
