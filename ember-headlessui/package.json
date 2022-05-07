@@ -21,7 +21,7 @@
   "scripts": {
     "start": "DEV=true concurrently 'npm:watch:*'",
     "build": "concurrently 'npm:build:*'",
-    "build:js": "rollup -c ./rollup.config.js",
+    "build:js": "rollup -c ./rollup.config.mjs",
     "build:docs": "cp ../README.md ./README.md",
     "watch:js": "rollup -c --watch --no-watch.clearScreen",
     "lint": "concurrently 'npm:lint:js'",
