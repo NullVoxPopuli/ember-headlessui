@@ -5,10 +5,11 @@ import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import { typeOf } from '@ember/utils';
 
-import { Keys } from 'ember-headlessui/utils/keyboard';
 import { modifier } from 'ember-modifier';
 
-import type DialogStackProvider from 'ember-headlessui/services/dialog-stack-provider';
+import { Keys } from '../utils/keyboard';
+
+import type DialogStackProvider from '../services/dialog-stack-provider';
 
 interface Args {
   isOpen: boolean;
@@ -25,25 +26,23 @@ export default class DialogComponent extends Component<Args> {
   $portalRoot: HTMLElement;
   outsideClickedElement: HTMLElement | null = null;
 
-  handleEscapeKey = modifier(
-    (_element, [isOpen, onClose]: [boolean, () => void]) => {
-      let handler = (event: KeyboardEvent) => {
-        if (event.key !== Keys.Escape) return;
-        if (!isOpen) return;
+  handleEscapeKey = modifier((_element, [isOpen, onClose]: [boolean, () => void]) => {
+    let handler = (event: KeyboardEvent) => {
+      if (event.key !== Keys.Escape) return;
+      if (!isOpen) return;
 
-        event.preventDefault();
-        event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
 
-        onClose();
-      };
+      onClose();
+    };
 
-      window.addEventListener('keyup', handler);
+    window.addEventListener('keyup', handler);
 
-      return () => {
-        window.removeEventListener('keyup', handler);
-      };
-    }
-  );
+    return () => {
+      window.removeEventListener('keyup', handler);
+    };
+  });
 
   lockWindowScroll = modifier(() => {
     // Opt-out of some other dialog already locked scrolling
@@ -73,11 +72,13 @@ export default class DialogComponent extends Component<Args> {
 
     const {
       APP: { rootElement },
+      // typed-ember and ember-core had a disagreement for so long the best solution for
+      // getOwner being unknown is to now wait until ember-source publishes its own types...
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
     } = getOwner(this).resolveRegistration('config:environment');
 
-    this.$portalRoot = rootElement
-      ? document.querySelector(rootElement)
-      : document.body;
+    this.$portalRoot = rootElement ? document.querySelector(rootElement) : document.body;
 
     let { isOpen, onClose } = this.args;
 
