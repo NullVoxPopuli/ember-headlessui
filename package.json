@@ -11,13 +11,40 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "yarn workspace ember-headlessui build"
+    "build": "yarn workspace ember-headlessui build",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
+    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
+    "lint:hbs": "ember-template-lint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
+    "lint:other:fix": "prettier --write \"**/*.{json,md,yml}\"",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@nullvoxpopuli/eslint-configs": "^2.2.16",
+    "ember-template-lint": "^4.6.0",
+    "eslint": "^8.15.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2"
+  },
+  "resolutions": {
+    "@embroider/core": "^1.2.0",
+    "@embroider/macros": "^1.2.0",
+    "@embroider/util": "^1.2.0"
+  },
+  "engines": {
+    "node": "10.* || >= 12"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.hbs": "ember-template-lint --fix",
+    "*.{json,md,yml}": "prettier --write"
   },
   "volta": {
     "node": "16.15.0",
     "yarn": "1.22.10"
-  },
-  "engines": {
-    "node": "10.* || >= 12"
   }
 }
