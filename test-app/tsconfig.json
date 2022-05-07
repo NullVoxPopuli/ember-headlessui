@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
-    "module": "ES2020",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
 
     // Trying to check Ember apps and addons with `allowJs: true` is a recipe
@@ -66,20 +66,10 @@
     // work with TypeScript.
     "baseUrl": ".",
     "paths": {
-      "test-app/tests/*": [
-        "tests/*"
-      ],
-      "test-app/*": [
-        "app/*"
-      ],
-      "*": [
-        "types/*"
-      ]
+      "test-app/tests/*": ["tests/*"],
+      "test-app/*": ["app/*"],
+      "*": ["types/*"]
     }
   },
-  "include": [
-    "app/**/*",
-    "tests/**/*",
-    "types/**/*"
-  ]
+  "include": ["app/**/*", "tests/**/*", "types/**/*"]
 }
