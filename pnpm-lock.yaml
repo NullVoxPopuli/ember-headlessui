@@ -29,6 +29,33 @@ importers:
       '@ember/test-helpers': ^2.6.0
       '@glimmer/component': ^1.0.4
       '@glimmer/tracking': ^1.0.4
+      '@types/ember__application': ^4.0.0
+      '@types/ember__array': ^4.0.1
+      '@types/ember__component': ^4.0.8
+      '@types/ember__controller': ^4.0.0
+      '@types/ember__debug': ^4.0.1
+      '@types/ember__engine': ^4.0.0
+      '@types/ember__error': ^4.0.0
+      '@types/ember__object': ^4.0.2
+      '@types/ember__polyfills': ^4.0.0
+      '@types/ember__routing': ^4.0.5
+      '@types/ember__runloop': ^4.0.1
+      '@types/ember__service': ^4.0.0
+      '@types/ember__string': ^3.0.9
+      '@types/ember__template': ^4.0.0
+      '@types/ember__test': ^4.0.0
+      '@types/ember__test-helpers': ^2.6.1
+      '@types/ember__utils': ^4.0.0
+      '@types/ember-data': ^4.0.0
+      '@types/ember-data__adapter': ^4.0.0
+      '@types/ember-data__model': ^4.0.0
+      '@types/ember-data__serializer': ^4.0.0
+      '@types/ember-data__store': ^4.0.0
+      '@types/ember-qunit': ^5.0.0
+      '@types/ember-resolver': ^5.0.11
+      '@types/htmlbars-inline-precompile': ^3.0.0
+      '@types/qunit': ^2.11.3
+      '@types/rsvp': ^4.0.4
       babel-eslint: ^10.1.0
       broccoli-asset-rev: ^3.0.0
       ember-auto-import: ^2.4.1
@@ -40,6 +67,8 @@ importers:
       ember-cli-inject-live-reload: ^2.1.0
       ember-cli-sri: ^2.1.1
       ember-cli-terser: ^4.0.2
+      ember-cli-typescript: ^5.1.0
+      ember-cli-typescript-blueprints: ^3.0.0
       ember-data: ~4.3.0
       ember-export-application-global: ^2.0.1
       ember-fetch: ^8.1.1
@@ -61,12 +90,40 @@ importers:
       prettier: ^2.6.1
       qunit: ^2.18.0
       qunit-dom: ^2.0.0
+      typescript: ^4.6.4
       webpack: ^5.70.0
     devDependencies:
       '@ember/optional-features': 2.0.0
       '@ember/test-helpers': 2.7.0
       '@glimmer/component': 1.1.2
       '@glimmer/tracking': 1.1.2
+      '@types/ember__application': 4.0.0
+      '@types/ember__array': 4.0.1
+      '@types/ember__component': 4.0.8
+      '@types/ember__controller': 4.0.0
+      '@types/ember__debug': 4.0.1
+      '@types/ember__engine': 4.0.0
+      '@types/ember__error': 4.0.0
+      '@types/ember__object': 4.0.2
+      '@types/ember__polyfills': 4.0.0
+      '@types/ember__routing': 4.0.5
+      '@types/ember__runloop': 4.0.1
+      '@types/ember__service': 4.0.0
+      '@types/ember__string': 3.0.9
+      '@types/ember__template': 4.0.0
+      '@types/ember__test': 4.0.0
+      '@types/ember__test-helpers': 2.6.1
+      '@types/ember__utils': 4.0.0
+      '@types/ember-data': 4.0.0
+      '@types/ember-data__adapter': 4.0.0
+      '@types/ember-data__model': 4.0.0
+      '@types/ember-data__serializer': 4.0.0
+      '@types/ember-data__store': 4.0.0
+      '@types/ember-qunit': 5.0.0
+      '@types/ember-resolver': 5.0.11
+      '@types/htmlbars-inline-precompile': 3.0.0
+      '@types/qunit': 2.11.3
+      '@types/rsvp': 4.0.4
       babel-eslint: 10.1.0_eslint@7.32.0
       broccoli-asset-rev: 3.0.0
       ember-auto-import: 2.4.1_webpack@5.72.0
@@ -78,6 +135,8 @@ importers:
       ember-cli-inject-live-reload: 2.1.0
       ember-cli-sri: 2.1.1
       ember-cli-terser: 4.0.2
+      ember-cli-typescript: 5.1.0
+      ember-cli-typescript-blueprints: 3.0.0
       ember-data: 4.3.0_webpack@5.72.0
       ember-export-application-global: 2.0.1
       ember-fetch: 8.1.1
@@ -99,6 +158,7 @@ importers:
       prettier: 2.6.2
       qunit: 2.19.1
       qunit-dom: 2.0.0
+      typescript: 4.6.4
       webpack: 5.72.0
 
   ember-headlessui:
@@ -965,7 +1025,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3_@babel+core@7.17.10
 
@@ -1019,7 +1079,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/helper-skip-transparent-expression-wrappers': 7.16.0
       '@babel/plugin-syntax-optional-chaining': 7.8.3_@babel+core@7.17.10
@@ -1167,7 +1227,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
 
   /@babel/plugin-syntax-numeric-separator/7.10.4_@babel+core@7.17.10:
@@ -1207,7 +1267,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
 
   /@babel/plugin-syntax-private-property-in-object/7.14.5_@babel+core@7.17.10:
