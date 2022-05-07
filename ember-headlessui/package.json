@@ -43,6 +43,11 @@
     "focus-trap": "^6.7.1",
     "tracked-maps-and-sets": "^3.0.1"
   },
+  "peerDependencies": {
+    "@glimmer/component": "^1.0.4",
+    "@glimmer/tracking": "^1.0.4",
+    "ember-source": ">= 3.25.0"
+  },
   "devDependencies": {
     "@babel/core": "7.17.10",
     "@babel/plugin-proposal-class-properties": "7.16.7",
