@@ -1,64 +1,125 @@
 name: CI
-
 on:
-  pull_request:
+  pull_request: null
   push:
     branches:
       - main
       - master
-
+  schedule:
+    - cron: 0 3 * * 0
+env:
+  CI: true
+  dist: ember-resources/dist
 jobs:
-  test:
+  tests:
+    name: Base Tests
+    timeout-minutes: 5
     runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
-
-      - name: test
-        run: yarn ember test
-
-  ember-try:
-    runs-on: ubuntu-latest
-    needs: ['lint', 'test']
+    needs:
+      - build_test
     strategy:
+      matrix:
+        node:
+          - "12"
+          - "14"
+          - "16"
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.32.1
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Test with ${{ matrix.node }}
+        run: pnpm --filter test-app run ember:test
+
+  try-scenarios:
+    name: ${{ matrix.ember-try-scenario }}
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    needs: tests
+    strategy:
+      fail-fast: true
       matrix:
         ember-try-scenario:
           - ember-minimum-supported
-          - ember-lts-3-28
+          - ember-3.28
+          - ember-4.0.0
           - ember-release
           - ember-beta
           - ember-canary
+          - embroider-safe
+          - embroider-optimized
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 12.x
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.32.1
+      - name: Install Dependencies
+        run: pnpm install
+      - name: test
+        working-directory: test-app
+        run: >
+          node_modules/.bin/ember try:one ${{ matrix.ember-try-scenario }}
+          --skip-cleanup
 
+  typescript-compatibility:
+    name: types w/ ${{ matrix.typescript-scenario }}
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    needs: build_test
+    strategy:
+      fail-fast: true
+      matrix:
+        typescript-scenario:
+          - typescript@4.2
+          - typescript@4.3
+          - typescript@4.4
+          - typescript@4.5
+          - typescript@4.6
+          - typescript@next
     steps:
       - uses: actions/checkout@v2
-      - uses: volta-cli/action@v1
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          fetch-depth: 1
+      - uses: volta-cli/action@v1
+        with:
+          node-version: 12.x
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
-
-      - name: test ${{ matrix.ember-try-scenario }}
-        run: yarn ember try:one ${{ matrix.ember-try-scenario }}
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.32.1
+      - name: Install Dependencies
+        run: pnpm install
+      - name: Update TS Version
+        run: pnpm add --save-dev ${{ matrix.typescript-scenario }}
+        working-directory: test-app
+      - name: Type checking
+        run: pnpm --filter test-app exec tsc --build
