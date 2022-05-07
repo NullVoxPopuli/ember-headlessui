@@ -86,7 +86,6 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     continue-on-error: true
-    needs: build_test
     strategy:
       fail-fast: true
       matrix:
