@@ -16,7 +16,7 @@
 
     // Features
     "experimentalDecorators": true,
-    "allowJs": false,
+    "allowJs": true, // The whole library is in transition
     "allowSyntheticDefaultImports": true,
 
     // Strictness / Correctness
@@ -31,14 +31,10 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "paths": {
-
       // No paths, no absolute imports, only node_modules imports allowed
       // But fallback for type-overrides and such
       "*": ["types/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "types/*"
-  ]
+  "include": ["src/**/*", "types/*"]
 }
