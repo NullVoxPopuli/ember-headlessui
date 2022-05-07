@@ -55,6 +55,7 @@ importers:
       rollup: 2.72.0
       rollup-plugin-ts: 2.0.7
       tracked-maps-and-sets: ^3.0.1
+      tslib: ^2.4.0
       typescript: 4.6.4
     dependencies:
       '@ember/render-modifiers': 2.0.4_@babel+core@7.17.10
@@ -66,6 +67,7 @@ importers:
       ember-truth-helpers: 3.0.0
       focus-trap: 6.9.1
       tracked-maps-and-sets: 3.0.2
+      tslib: 2.4.0
     devDependencies:
       '@babel/core': 7.17.10
       '@babel/plugin-proposal-class-properties': 7.16.7_@babel+core@7.17.10
@@ -891,7 +893,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3_@babel+core@7.17.10
 
@@ -945,7 +947,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
       '@babel/helper-skip-transparent-expression-wrappers': 7.16.0
       '@babel/plugin-syntax-optional-chaining': 7.8.3_@babel+core@7.17.10
@@ -1093,7 +1095,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
 
   /@babel/plugin-syntax-numeric-separator/7.10.4_@babel+core@7.17.10:
@@ -1133,7 +1135,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
 
   /@babel/plugin-syntax-private-property-in-object/7.14.5_@babel+core@7.17.10:
@@ -16054,7 +16056,6 @@ packages:
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
-    dev: true
 
   /tsutils/3.21.0:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
