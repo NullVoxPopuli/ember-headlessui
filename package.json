@@ -11,7 +11,7 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "yarn workspace ember-headlessui build",
+    "build": "pnpm run --filter ember-headlessui build",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
     "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
@@ -20,7 +20,7 @@
     "lint:js:fix": "eslint . --fix",
     "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
     "lint:other:fix": "prettier --write \"**/*.{json,md,yml}\"",
-    "prepare": "husky install; yarn build"
+    "prepare": "husky install; pnpm run build"
   },
   "devDependencies": {
     "@nullvoxpopuli/eslint-configs": "^2.2.16",
@@ -44,7 +44,6 @@
     "*.{json,md,yml}": "prettier --write"
   },
   "volta": {
-    "node": "16.15.0",
-    "yarn": "1.22.10"
+    "node": "16.15.0"
   }
 }
