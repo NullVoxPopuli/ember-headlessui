@@ -1,3 +1,4 @@
 packages:
   - "ember-headlessui"
+  - "docs"
   - "test-app"
