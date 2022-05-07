@@ -12,14 +12,8 @@
   "author": "",
   "scripts": {
     "build": "pnpm run --filter ember-headlessui build",
-    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
-    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
-    "lint:hbs": "ember-template-lint .",
-    "lint:hbs:fix": "ember-template-lint . --fix",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix",
-    "lint:other": "prettier --check \"**/*.{json,md,yml}\"",
-    "lint:other:fix": "prettier --write \"**/*.{json,md,yml}\"",
+    "lint": "pnpm run --filter \"**\" lint",
+    "lint:fix": "pnpm run --filter \"**\" lint:fix",
     "prepare": "husky install; pnpm run build"
   },
   "devDependencies": {
