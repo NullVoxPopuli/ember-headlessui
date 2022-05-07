@@ -36,7 +36,16 @@ export default defineConfig({
       browserslist: ['last 2 firefox versions', 'last 2 chrome versions'],
       tsconfig: {
         fileName: 'tsconfig.json',
-        hook: (config) => ({ ...config, declaration: true }),
+        hook: (config) => ({
+          ...config,
+          declaration: true,
+          declarationMap: true,
+          /**
+          * Default to failing the build if there are type errors.
+          * DEV is set when `yarn start` is used, which allows more flexible contribution
+          */
+          noEmitOnError: process.env.DEV === 'true' ? false : true,
+        }),
       },
     }),
 

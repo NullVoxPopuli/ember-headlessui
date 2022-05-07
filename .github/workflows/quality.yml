@@ -1,4 +1,4 @@
-name: CI
+name: Quality
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
       - master
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,37 +28,41 @@ jobs:
       - name: install dependencies
         run: yarn install --frozen-lockfile --non-interactive
 
-      - name: test
-        run: yarn ember test
+      - name: lint
+        run: yarn lint
 
-  ember-try:
+  typescript-compatibility:
+    name: types w/ ${{ matrix.typescript-scenario }}
+    timeout-minutes: 5
     runs-on: ubuntu-latest
-    needs: ['lint', 'test']
+    continue-on-error: true
     strategy:
+      fail-fast: true
       matrix:
-        ember-try-scenario:
-          - ember-minimum-supported
-          - ember-lts-3-28
-          - ember-release
-          - ember-beta
-          - ember-canary
-
+        typescript-scenario:
+          - typescript@4.2
+          - typescript@4.3
+          - typescript@4.4
+          - typescript@4.5
+          - typescript@4.6
+          - typescript@next
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - uses: volta-cli/action@v1
-
+        with:
+          node-version: 12.x
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
 
       - name: install dependencies
         run: yarn install --frozen-lockfile --non-interactive
+      - name: Update TS Version
+        run: yarn add --dev ${{ matrix.typescript-scenario }}
+        working-directory: test-app
+      - name: Type checking
+        run: yarn tsc --build
+        working-directory: test-app
 
-      - name: test ${{ matrix.ember-try-scenario }}
-        run: yarn ember try:one ${{ matrix.ember-try-scenario }}

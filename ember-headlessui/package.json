@@ -19,7 +19,7 @@
     "README.md"
   ],
   "scripts": {
-    "start": "concurrently 'npm:watch:*'",
+    "start": "DEV=true concurrently 'npm:watch:*'",
     "build": "concurrently 'npm:build:*'",
     "build:js": "rollup -c ./rollup.config.js",
     "build:docs": "cp ../README.md ./README.md",
