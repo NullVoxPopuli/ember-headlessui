@@ -141,7 +141,7 @@ importers:
       babel-eslint: ^10.1.0
       broccoli-asset-rev: ^3.0.0
       dotenv-cli: ^4.0.0
-      ember-auto-import: ^1.11.3
+      ember-auto-import: ^2.4.1
       ember-cli: ~3.28.4
       ember-cli-app-version: ^5.0.0
       ember-cli-babel: ^7.26.6
@@ -231,7 +231,7 @@ importers:
       babel-eslint: 10.1.0_eslint@7.32.0
       broccoli-asset-rev: 3.0.0
       dotenv-cli: 4.1.1
-      ember-auto-import: 1.12.1
+      ember-auto-import: 2.4.1_webpack@5.72.0
       ember-cli: 3.28.5
       ember-cli-app-version: 5.0.0
       ember-cli-babel: 7.26.11
@@ -1089,7 +1089,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
 
   /@babel/plugin-syntax-numeric-separator/7.10.4_@babel+core@7.17.10:
@@ -1129,7 +1129,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       '@babel/helper-plugin-utils': 7.16.7
 
   /@babel/plugin-syntax-private-property-in-object/7.14.5_@babel+core@7.17.10:
@@ -4831,7 +4831,7 @@ packages:
       '@babel/core': ^7.0.0
       webpack: '>=2'
     dependencies:
-      '@babel/core': 7.17.10_supports-color@8.1.1
+      '@babel/core': 7.17.10
       find-cache-dir: 3.3.2
       loader-utils: 2.0.2
       make-dir: 3.1.0
@@ -7470,6 +7470,45 @@ packages:
       - supports-color
       - webpack-cli
       - webpack-command
+    dev: true
+
+  /ember-auto-import/2.4.1_webpack@5.72.0:
+    resolution: {integrity: sha512-lyCl2hzIb6Dlcmfm3gI3lAtaOk/nzR2kM4GDJRRu19YJhhSkpiIMSDVjw8ShxmnYiI005R1eOcP3C/GgRRW5mA==}
+    engines: {node: 12.* || 14.* || >= 16}
+    dependencies:
+      '@babel/core': 7.17.10
+      '@babel/plugin-proposal-class-properties': 7.16.7_@babel+core@7.17.10
+      '@babel/plugin-proposal-decorators': 7.17.9_@babel+core@7.17.10
+      '@babel/preset-env': 7.17.10_@babel+core@7.17.10
+      '@embroider/macros': 1.6.0
+      '@embroider/shared-internals': 1.6.0
+      babel-loader: 8.2.5_887a5110397f957d9e06dd05497793db
+      babel-plugin-ember-modules-api-polyfill: 3.5.0
+      babel-plugin-htmlbars-inline-precompile: 5.3.1
+      babel-plugin-syntax-dynamic-import: 6.18.0
+      broccoli-debug: 0.6.5
+      broccoli-funnel: 3.0.8
+      broccoli-merge-trees: 4.2.0
+      broccoli-plugin: 4.0.7
+      broccoli-source: 3.0.1
+      css-loader: 5.2.7_webpack@5.72.0
+      debug: 4.3.4
+      fs-extra: 10.1.0
+      fs-tree-diff: 2.0.1
+      handlebars: 4.7.7
+      js-string-escape: 1.0.1
+      lodash: 4.17.21
+      mini-css-extract-plugin: 2.6.0_webpack@5.72.0
+      parse5: 6.0.1
+      resolve: 1.22.0
+      resolve-package-path: 4.0.3
+      semver: 7.3.7
+      style-loader: 2.0.0_webpack@5.72.0
+      typescript-memoize: 1.1.0
+      walk-sync: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
+      - webpack
     dev: true
 
   /ember-cache-primitive-polyfill/1.0.1:
@@ -15974,7 +16013,7 @@ packages:
       is-yarn-global: 0.3.0
       latest-version: 5.1.0
       pupa: 2.1.1
-      semver: 7.3.7
+      semver: 7.3.5
       semver-diff: 3.1.1
       xdg-basedir: 4.0.0
     dev: true
