@@ -4,7 +4,20 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    autoImport: {
+      webpack: {
+        node: {
+          // Required to import `testdouble` in tests
+          global: true,
+        },
+      },
+    },
+
+    postcssOptions: {
+      compile: {
+        plugins: [require('tailwindcss')('./config/tailwind.config.js')],
+      },
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
