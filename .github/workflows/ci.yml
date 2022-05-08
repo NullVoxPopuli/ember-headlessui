@@ -12,7 +12,7 @@ env:
   dist: ember-resources/dist
 jobs:
   tests:
-    name: Base Tests
+    name: Tests
     timeout-minutes: 5
     runs-on: ubuntu-latest
     strategy:
@@ -39,7 +39,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: Test with ${{ matrix.node }}
-        run: pnpm --filter test-app run ember:test
+        run: pnpm --filter test-app run test:ember
 
   try-scenarios:
     name: ${{ matrix.ember-try-scenario }}
