@@ -22,9 +22,12 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
   },
+  "dependencies": {
+    "ember-headlessui": "*"
+  },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
-    "@ember/test-helpers": "^2.4.2",
+    "@ember/test-helpers": "^2.6.0",
     "@embroider/compat": "^1.6.0",
     "@embroider/core": "^1.6.0",
     "@embroider/test-setup": "1.6.0",
@@ -58,22 +61,18 @@
     "@types/rsvp": "^4.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "dotenv-cli": "^4.0.0",
     "ember-auto-import": "^2.4.1",
-    "ember-cli": "~3.28.4",
+    "ember-cli": "~4.3.0",
     "ember-cli-app-version": "^5.0.0",
-    "ember-cli-babel": "^7.26.6",
+    "ember-cli-babel": "^7.26.11",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-deprecation-workflow": "^2.0.0",
     "ember-cli-htmlbars": "^6.0.1",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-typescript": "^5.1.0",
     "ember-cli-typescript-blueprints": "^3.0.0",
-    "ember-css-transitions": "^2.1.0",
-    "ember-disable-prototype-extensions": "^1.1.3",
     "ember-export-application-global": "^2.0.1",
     "ember-fetch": "^8.1.1",
-    "ember-headlessui": "*",
     "ember-load-initializers": "^2.1.2",
     "ember-maybe-import-regenerator": "^1.0.0",
     "ember-on-helper": "^0.1.0",
@@ -97,15 +96,13 @@
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
-    "qunit": "^2.16.0",
-    "qunit-dom": "^1.6.0",
+    "qunit": "^2.18.0",
+    "qunit-dom": "^2.0.0",
     "qunit-wait-for": "^2.0.1",
-    "release-it": "^14.8.0",
-    "release-it-lerna-changelog": "^3.1.0",
     "testdouble": "^3.16.1",
     "testdouble-qunit": "^3.0.0",
     "typescript": "^4.6.4",
-    "webpack": "^5.51.1"
+    "webpack": "^5.70.1"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
