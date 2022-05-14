@@ -13,6 +13,7 @@
     "./*": "./dist/*",
     "./addon-main.js": "./addon-main.cjs"
   },
+  "main": "addon-main.cjs",
   "files": [
     "dist",
     "addon-main.cjs",
@@ -21,10 +22,12 @@
   ],
   "scripts": {
     "start": "DEV=true concurrently 'npm:watch:*'",
-    "build": "concurrently 'npm:build:*'",
+    "build": "rm -rf ./dist && concurrently 'npm:build:*'",
     "build:js": "rollup -c ./rollup.config.mjs",
+    "build:types": "tsc --build",
     "build:docs": "cp ../README.md ./README.md",
     "watch:js": "rollup -c --watch --no-watch.clearScreen",
+    "watch:types": "tsc --build --watch",
     "lint": "concurrently 'npm:lint:js'",
     "lint:fix": "concurrently 'npm:lint:js:fix'",
     "lint:js": "eslint . --cache",
@@ -61,6 +64,8 @@
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "@nullvoxpopuli/eslint-configs": "2.2.16",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "babel-eslint": "10.1.0",
     "concurrently": "7.1.0",
     "dotenv-cli": "^4.0.0",

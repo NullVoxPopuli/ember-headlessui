@@ -1,8 +1,10 @@
 // @ts-nocheck
-import ts from 'rollup-plugin-ts';
 import { defineConfig } from 'rollup';
+import { babel } from '@rollup/plugin-babel';
+import resolve from '@rollup/plugin-node-resolve';
 
 import { Addon } from '@embroider/addon-dev/rollup';
+import packageJson from './package.json' assert { type: "json" };
 
 const addon = new Addon({
   srcDir: 'src',
@@ -14,7 +16,13 @@ export default defineConfig({
     ...addon.output(),
     sourcemap: true,
   },
+  external: [
+    ...Object.keys((packageJson).dependencies),
+    ...Object.keys((packageJson).peerDependencies),
+  ],
   plugins: [
+    resolve({ extensions: ['.js', '.ts'] }),
+
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
     addon.publicEntrypoints(['**/*.{js,ts}']),
@@ -34,25 +42,9 @@ export default defineConfig({
     // It exists only to provide development niceties for you, like automatic
     // template colocation.
     // See `babel.config.json` for the actual Babel configuration!
-    ts({
-      // can be changed to swc or other transpilers later
-      // but we need the ember plugins converted first
-      // (template compilation and co-location)
-      transpiler: 'babel',
-      browserslist: ['last 2 firefox versions', 'last 2 chrome versions'],
-      tsconfig: {
-        fileName: 'tsconfig.json',
-        hook: (config) => ({
-          ...config,
-          declaration: true,
-          declarationMap: true,
-          /**
-           * Default to failing the build if there are type errors.
-           * DEV is set when `yarn start` is used, which allows more flexible contribution
-           */
-          noEmitOnError: process.env.DEV === 'true' ? false : true,
-        }),
-      },
+    babel({
+      babelHelpers: 'bundled',
+      extensions: ['.js', '.ts'],
     }),
 
     // Follow the V2 Addon rules about dependencies. Your code can import from
@@ -66,7 +58,5 @@ export default defineConfig({
     // addons are allowed to contain imports of .css files, which we want rollup
     // to leave alone and keep in the published output.
     // addon.keepAssets(['**/*.css']),
-
-    addon.clean(),
   ],
 });
