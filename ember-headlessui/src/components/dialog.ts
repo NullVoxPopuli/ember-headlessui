@@ -72,10 +72,6 @@ export default class DialogComponent extends Component<Args> {
 
     const {
       APP: { rootElement },
-      // typed-ember and ember-core had a disagreement for so long the best solution for
-      // getOwner being unknown is to now wait until ember-source publishes its own types...
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
     } = getOwner(this).resolveRegistration('config:environment');
 
     this.$portalRoot = rootElement ? document.querySelector(rootElement) : document.body;

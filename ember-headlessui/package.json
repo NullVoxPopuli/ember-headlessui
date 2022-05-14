@@ -10,7 +10,8 @@
   "author": "",
   "exports": {
     ".": "./dist/index.js",
-    "./*": "./dist/*"
+    "./*": "./dist/*",
+    "./addon-main.js": "./addon-main.cjs"
   },
   "files": [
     "dist",
@@ -46,7 +47,8 @@
     "tslib": "^2.4.0"
   },
   "peerDependencies": {
-    "ember-source": ">= 3.25.0"
+    "ember-source": ">= 3.25.0",
+    "ember-cli-htmlbars": ">= 6.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.17.10",
@@ -74,7 +76,7 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "release-it": "^14.8.0",
     "release-it-lerna-changelog": "^3.1.0",
-    "rollup": "2.72.1",
+    "rollup": "2.73.0",
     "rollup-plugin-ts": "2.0.7",
     "typescript": "4.6.4"
   },
